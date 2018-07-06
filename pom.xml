@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zoudong</groupId>
+    <artifactId>spring-cloud-zull-gateway</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>spring-cloud-zull-gateway</name>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
+        <spring-cloud-starter-zull.version>1.4.5.RELEASE</spring-cloud-starter-zull.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zuul</artifactId>
+            <version>${spring-cloud-starter-zull.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.5.RELEASE</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+
+        <finalName>spring-cloud-zull-gateway</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.0.3.RELEASE</version>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <eureka.ip>127.0.0.1</eureka.ip>
+                <eureka.port>8889</eureka.port>
+                <client.ip>192.168.1.30</client.ip>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
